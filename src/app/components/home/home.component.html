@@ -1,0 +1,45 @@
+<div class="container p-3">
+  <div class="list-group">
+    <div *ngFor="let mochila of mochilas" class="list-group-item" aria-current="true">
+      <div class="d-flex w-100 justify-content-between p-2">
+        <h5 class="mb-1">{{ mochila.payload.doc.data().nombre }}</h5>
+        <small>${{ mochila.payload.doc.data().precio }}</small>
+      </div>
+      <p class="card-text">{{ mochila.payload.doc.data().descripcion }}</p>
+
+
+      <div class="container mt-5">
+        <a [routerLink]="['editar/', mochila.payload.doc.id]" type="button" class="btn btn-primary">Editar</a>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger mx-3" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+          Eliminar
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro@ que quieres eliminar el registro?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button data-bs-dismiss="modal" type="button" class="btn btn-danger" (click)="deleteMochila(mochila.payload.doc.id)">
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="container card my-3 p-4">
+  <form class="flex-column gap-4" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <label for="nombre" class="form-label">Nombre del producto</label>
+    <input type="text" id="nombre" class="form-control" formControlName="nombre" value="{{nombre}}">
+
+    <label for="descripcion" class="form-label mt-3">Descripci&oacute;n del producto</label>
+    <textarea class="form-control" id="descripcion" rows="3" formControlName="descripcion" value="{{descripcion}}">
+    </textarea>
+
+    <label for="precio" class="form-label mt-3">Precio del producto</label>
+    <input type="number" id="precio" class="form-control" formControlName="precio" value="{{precio}}">
+
+    <input type="submit" value="Guardar" class="btn btn-success mt-3">
+  </form>
+
+  <div class="alert alert-success mt-3" role="alert" *ngIf="status">
+    Se ha creado correctamente!
+  </div>
+</div>
